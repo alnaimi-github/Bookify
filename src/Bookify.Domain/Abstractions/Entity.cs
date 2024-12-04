@@ -2,12 +2,12 @@
 
 public abstract class Entity
 {
-    private readonly List<IDomainEvent> _domainEvents = [];
+    private readonly List<IDomainEvent> _domainEvents = new List<IDomainEvent>();
     public Guid Id { get; init; }
 
     protected Entity(Guid id)
     {
-        id = Id;
+        Id = id;
     }
 
     public IReadOnlyList<IDomainEvent> GetDomainEvents()
