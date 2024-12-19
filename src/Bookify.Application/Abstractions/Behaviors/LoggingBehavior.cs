@@ -31,10 +31,10 @@ internal sealed class LoggingBehavior<TRequest, TResponse>(
             }
             else
             {
-                using (LogContext.PushProperty("Error", result.Error, true))
-                {
-                    _logger.LogError("Request {RequestName} processed with error", requestName);
-                }
+                //using (LogContext.PushProperty("Error", result.Error, true))
+                //{
+                //    _logger.LogError("Request {RequestName} processed with error", requestName);
+                //}
             }
 
             return result;

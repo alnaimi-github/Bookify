@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Infrastructure", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Application", "src\Bookify.Application\Bookify.Application.csproj", "{3F1B249F-C025-44E4-A8A1-6642BF99052B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Api", "Bookify.Api\Bookify.Api.csproj", "{B5E0D809-D717-49BE-9C09-2EF6ADF459E8}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C09F5380-2E79-4574-81F3-853610F11064}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{3F1B249F-C025-44E4-A8A1-6642BF99052B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F1B249F-C025-44E4-A8A1-6642BF99052B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F1B249F-C025-44E4-A8A1-6642BF99052B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5E0D809-D717-49BE-9C09-2EF6ADF459E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5E0D809-D717-49BE-9C09-2EF6ADF459E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5E0D809-D717-49BE-9C09-2EF6ADF459E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5E0D809-D717-49BE-9C09-2EF6ADF459E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C09F5380-2E79-4574-81F3-853610F11064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C09F5380-2E79-4574-81F3-853610F11064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C09F5380-2E79-4574-81F3-853610F11064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C09F5380-2E79-4574-81F3-853610F11064}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,5 +51,6 @@ Global
 		{E2463EDB-0C4B-4705-AE45-2A941856D6B9} = {DC6448EA-556E-4100-8427-7C4A7B94F378}
 		{07F43384-4A1A-4381-A01E-ABD627C0D21B} = {DC6448EA-556E-4100-8427-7C4A7B94F378}
 		{3F1B249F-C025-44E4-A8A1-6642BF99052B} = {DC6448EA-556E-4100-8427-7C4A7B94F378}
+		{B5E0D809-D717-49BE-9C09-2EF6ADF459E8} = {DC6448EA-556E-4100-8427-7C4A7B94F378}
 	EndGlobalSection
 EndGlobal

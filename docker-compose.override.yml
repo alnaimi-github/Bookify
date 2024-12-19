@@ -1,0 +1,23 @@
+services:
+  bookify.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ConnectionStrings__Database=Server=bookify-db;Port=5432;Database=BookifyDb;User Id=postgres;Password=postgres;Include Error Detail=true
+    ports:
+      - "80"
+      - "5001:443"
+    depends_on:
+      - bookify-db
+
+  bookify-db:
+    container_name: Bookify.Db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=BookifyDb
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_bookifydb:/var/lib/postgresql/data/

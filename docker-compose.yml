@@ -1,0 +1,15 @@
+services:
+  bookify.api:
+    image: ${DOCKER_REGISTRY-}bookifyapi
+    container_name: Bookify.Api
+    build:
+      context: .
+      dockerfile: Bookify.Api/Dockerfile
+
+ 
+  bookify-db:
+   image: postgres:latest
+
+
+volumes:
+  postgres_bookifydb:
