@@ -5,10 +5,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bookify.Infrastructure;
 
-internal sealed class ApplicationDbContext(
-    DbContextOptions options,IPublisher publisher) 
-    : DbContext(options), IUnitOfWork
+public sealed class ApplicationDbContext : DbContext, IUnitOfWork
 {
+    private readonly IPublisher _publisher;
+
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options,IPublisher publisher) : base(options)
+    {
+        _publisher = publisher;
+    }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
@@ -47,7 +52,7 @@ internal sealed class ApplicationDbContext(
 
             foreach (var domainEvent in domainEvents)
             {
-                await publisher.Publish(domainEvent);
+                await _publisher.Publish(domainEvent);
             }
 
     }

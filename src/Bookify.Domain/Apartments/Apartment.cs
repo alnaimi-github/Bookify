@@ -34,4 +34,9 @@ public sealed class Apartment : Entity
         LastBookedOnUtc = lastTimeBookedOnUtc;
         Amenities = amenities;
     }
+
+    private Apartment()
+    {
+
+    }
 }

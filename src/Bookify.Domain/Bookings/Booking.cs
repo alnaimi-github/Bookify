@@ -59,6 +59,10 @@ public sealed class Booking : Entity
         CreatedOnUtc = createdOnUtc;
     }
 
+    private Booking()
+    {
+    }
+
     public static Booking Reserve(
         Apartment apartment,
         Guid userId,

@@ -38,6 +38,11 @@ public sealed class Review : Entity
         CreatedOnUtc = createdOnUtc;
     }
 
+    private Review()
+    {
+
+    }
+
     public static Result<Review> Create(
         Booking booking,
         Rating rating,

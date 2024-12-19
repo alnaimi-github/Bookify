@@ -21,6 +21,11 @@ public sealed class User : Entity
         Email = email;
     }
 
+    private User()
+    {
+
+    }
+
     public static User Create(
         FirstName firstName,
         LastName lastName,
