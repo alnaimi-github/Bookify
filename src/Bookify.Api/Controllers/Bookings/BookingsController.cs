@@ -11,7 +11,8 @@ namespace Bookify.Api.Controllers.Bookings;
 public class BookingsController(ISender sender) : ControllerBase
 {
     [HttpGet("id")]
-    public async Task<IActionResult> GetBooking(Guid id, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetBooking(Guid id, 
+        CancellationToken cancellationToken)
     {
         var query = new GetBookingQuery(id);
 

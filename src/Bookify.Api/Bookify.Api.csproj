@@ -7,6 +7,7 @@
     <UserSecretsId>b77ba3c3-ad27-431f-be57-0dea46bd4699</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Bookify.Application\Bookify.Application.csproj" />
-    <ProjectReference Include="..\src\Bookify.Infrastructure\Bookify.Infrastructure.csproj" />
+    <ProjectReference Include="..\Bookify.Application\Bookify.Application.csproj" />
+    <ProjectReference Include="..\Bookify.Infrastructure\Bookify.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
