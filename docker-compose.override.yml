@@ -18,7 +18,7 @@ services:
       - POSTGRES_DB=BookifyDb
     restart: always
     ports:
-      - "5432:5432"
+      - "4001:5432"
     volumes:
       - postgres_bookifydb:/var/lib/postgresql/data/
 

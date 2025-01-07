@@ -3,7 +3,7 @@ using Bookify.Application.Abstractions.Messaging;
 using Bookify.Domain.Abstractions;
 using Bookify.Domain.Users.Interfaces;
 using Bookify.Domain.Users.ValueObjects;
-using Bookify.Domain.Users;
+using Bookify.Domain.Users.Entities;
 
 namespace Bookify.Application.Users.RegisterUser;
 

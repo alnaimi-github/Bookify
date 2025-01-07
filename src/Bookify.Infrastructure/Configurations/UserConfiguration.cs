@@ -1,7 +1,7 @@
-﻿using Bookify.Domain.Users;
-using Bookify.Domain.Users.ValueObjects;
+﻿using Bookify.Domain.Users.ValueObjects;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using Bookify.Domain.Users.Entities;
 
 namespace Bookify.Infrastructure.Configurations;
 

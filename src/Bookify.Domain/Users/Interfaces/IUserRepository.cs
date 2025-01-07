@@ -1,4 +1,6 @@
-﻿namespace Bookify.Domain.Users.Interfaces;
+﻿using Bookify.Domain.Users.Entities;
+
+namespace Bookify.Domain.Users.Interfaces;
 
 public interface IUserRepository
 {

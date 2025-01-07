@@ -1,15 +1,23 @@
 ﻿using Bookify.Infrastructure.Authentication.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Text;
+using System.Text.Json;
 
 namespace Bookify.Infrastructure.Authentication;
 
-public sealed class AdminAuthorizationDelegatingHandler(IOptions<KeycloakOptions> keycloakOptions)
-    : DelegatingHandler
+
+public sealed class AdminAuthorizationDelegatingHandler : DelegatingHandler
 {
-    private readonly KeycloakOptions _keycloakOptions = keycloakOptions.Value;
+    private readonly KeycloakOptions _keycloakOptions;
+
+    public AdminAuthorizationDelegatingHandler(IOptions<KeycloakOptions> keycloakOptions)
+    {
+        _keycloakOptions = keycloakOptions.Value;
+    }
 
     protected override async Task<HttpResponseMessage> SendAsync(
         HttpRequestMessage request,
@@ -51,7 +59,7 @@ public sealed class AdminAuthorizationDelegatingHandler(IOptions<KeycloakOptions
 
         authorizationResponse.EnsureSuccessStatusCode();
 
-        return await authorizationResponse.Content.ReadFromJsonAsync<AuthorizationToken>(cancellationToken: cancellationToken) ??
+        return await authorizationResponse.Content.ReadFromJsonAsync<AuthorizationToken>(cancellationToken) ??
                throw new ApplicationException();
     }
 }
