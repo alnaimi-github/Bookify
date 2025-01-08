@@ -1,29 +1,34 @@
 ﻿using Bookify.Domain.Abstractions;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Serilog.Context;
 
 namespace Bookify.Application.Abstractions.Behaviors;
 
-internal sealed class LoggingBehavior<TRequest, TResponse>(
-    ILogger<LoggingBehavior<TRequest, TResponse>> logger)
+internal sealed class LoggingBehavior<TRequest, TResponse>
     : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IBaseRequest
     where TResponse : Result
 {
-    private readonly ILogger<LoggingBehavior<TRequest, TResponse>> _logger = logger;
+    private readonly ILogger<LoggingBehavior<TRequest, TResponse>> _logger;
+
+    public LoggingBehavior(ILogger<LoggingBehavior<TRequest, TResponse>> logger)
+    {
+        _logger = logger;
+    }
 
     public async Task<TResponse> Handle(
         TRequest request,
         RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
-        var requestName = request.GetType().Name;
+        string requestName = request.GetType().Name;
 
         try
         {
             _logger.LogInformation("Executing request {RequestName}", requestName);
 
-            var result = await next();
+            TResponse result = await next();
 
             if (result.IsSuccess)
             {
@@ -31,10 +36,10 @@ internal sealed class LoggingBehavior<TRequest, TResponse>(
             }
             else
             {
-                //using (LogContext.PushProperty("Error", result.Error, true))
-                //{
-                //    _logger.LogError("Request {RequestName} processed with error", requestName);
-                //}
+                using (LogContext.PushProperty("Error", result.Error, true))
+                {
+                    _logger.LogError("Request {RequestName} processed with error", requestName);
+                }
             }
 
             return result;
