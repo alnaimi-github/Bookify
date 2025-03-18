@@ -17,7 +17,7 @@ internal sealed class QueryCachingBehavior<TRequest, TResponse>(
         RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
-        var cachedResult = await cacheService.GetAsync < TResponse >(
+        var cachedResult = await cacheService.GetAsync<TResponse>(
         request.CacheKey,
         cancellationToken);
 
