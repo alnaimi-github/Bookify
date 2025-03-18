@@ -17,12 +17,10 @@ public static class DependencyInjection
 
             configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
 
-            services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly, includeInternalTypes: true);
-
-            //  configuration.AddOpenBehavior(typeof(QueryCachingBehavior<,>));
+            configuration.AddOpenBehavior(typeof(QueryCachingBehavior<,>));
         });
 
-        services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly, includeInternalTypes: true);
+        services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 
         services.AddTransient<PricingService>();
 

@@ -24,7 +24,7 @@ internal sealed class CacheService(IDistributedCache cache) : ICacheService
     {
         var bytes = Serialize(value);
 
-        return _cache.SetAsync(key, bytes,, cancellationToken);
+        return _cache.SetAsync(key, bytes,CacheOptions.Create(expirationTime), cancellationToken);
     }
 
     public  Task RemoveAsync(string key, CancellationToken cancellationToken = default)

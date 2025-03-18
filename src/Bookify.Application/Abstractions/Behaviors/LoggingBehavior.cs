@@ -5,18 +5,11 @@ using Serilog.Context;
 
 namespace Bookify.Application.Abstractions.Behaviors;
 
-internal sealed class LoggingBehavior<TRequest, TResponse>
+internal sealed class LoggingBehavior<TRequest, TResponse>(ILogger<LoggingBehavior<TRequest, TResponse>> logger)
     : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IBaseRequest
     where TResponse : Result
 {
-    private readonly ILogger<LoggingBehavior<TRequest, TResponse>> _logger;
-
-    public LoggingBehavior(ILogger<LoggingBehavior<TRequest, TResponse>> logger)
-    {
-        _logger = logger;
-    }
-
     public async Task<TResponse> Handle(
         TRequest request,
         RequestHandlerDelegate<TResponse> next,
@@ -26,19 +19,19 @@ internal sealed class LoggingBehavior<TRequest, TResponse>
 
         try
         {
-            _logger.LogInformation("Executing request {RequestName}", requestName);
+            logger.LogInformation("Executing request {RequestName}", requestName);
 
             TResponse result = await next();
 
             if (result.IsSuccess)
             {
-                _logger.LogInformation("Request {RequestName} processed successfully", requestName);
+                logger.LogInformation("Request {RequestName} processed successfully", requestName);
             }
             else
             {
                 using (LogContext.PushProperty("Error", result.Error, true))
                 {
-                    _logger.LogError("Request {RequestName} processed with error", requestName);
+                    logger.LogError("Request {RequestName} processed with error", requestName);
                 }
             }
 
@@ -46,7 +39,7 @@ internal sealed class LoggingBehavior<TRequest, TResponse>
         }
         catch (Exception exception)
         {
-            _logger.LogError(exception, "Request {RequestName} processing failed", requestName);
+            logger.LogError(exception, "Request {RequestName} processing failed", requestName);
 
             throw;
         }
